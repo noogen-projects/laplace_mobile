@@ -1,3 +1,3 @@
 fn main() {
-    dapla_mobile::main();
+    laplace_mobile::main();
 }

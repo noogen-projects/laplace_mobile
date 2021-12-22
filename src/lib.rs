@@ -1,6 +1,6 @@
 use actix_web::rt::System;
-use dapla_server::settings::Settings;
 use flexi_logger::{Duplicate, FileSpec, Logger};
+use laplace_server::settings::Settings;
 use log::info;
 
 mod panic;
@@ -11,8 +11,8 @@ pub fn main() {
         .unwrap()
         .log_to_file(
             FileSpec::default()
-                .directory("/sdcard/Android/data/rust.dapla_mobile/files")
-                .basename("dapla")
+                .directory("/sdcard/Android/data/rust.laplace_mobile/files")
+                .basename("laplace")
                 .suppress_timestamp()
                 .suffix("log"),
         )
@@ -23,11 +23,11 @@ pub fn main() {
     panic::set_logger_hook();
 
     info!("Load settings file");
-    let settings = Settings::new("/sdcard/Android/data/rust.dapla_mobile/files/settings.toml")
+    let settings = Settings::new("/sdcard/Android/data/rust.laplace_mobile/files/settings.toml")
         .expect("Settings should be configured");
 
     info!("Create actix system");
     System::new()
-        .block_on(async move { dapla_server::run(settings).await })
-        .expect("Dapla run error")
+        .block_on(async move { laplace_server::run(settings).await })
+        .expect("Laplace run error")
 }
