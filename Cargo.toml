@@ -14,15 +14,16 @@ description = "The mobile server of the local-firs web-application platform"
 crate-type = ["lib", "cdylib"]
 
 [dependencies]
-ndk-glue = "0.4"
+ndk-glue = "0.6"
 log = "0.4"
 flexi_logger = "0.22"
-actix-web = "=4.0.0-beta.9"
+actix-web = "4.0"
 laplace_server = { git = "https://github.com/noogen-projects/laplace" }
+openssl = { version = "0.10", features = ["vendored"] }
 
 [package.metadata.android.sdk]
 min_sdk_version = 16
-target_sdk_version = 22
+target_sdk_version = 23
 build_targets = ["aarch64-linux-android", "i686-linux-android"]
 
 [[package.metadata.android.uses_permission]]

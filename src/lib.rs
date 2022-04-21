@@ -7,7 +7,7 @@ mod panic;
 
 #[cfg_attr(target_os = "android", ndk_glue::main(backtrace = "on"))]
 pub fn main() {
-    Logger::try_with_env_or_str("info,regalloc=warn,wasmer_compiler_cranelift=warn")
+    Logger::try_with_env_or_str("info,regalloc=warn,wasmer_compiler_cranelift=warn,cranelift_codegen=warn")
         .unwrap()
         .log_to_file(
             FileSpec::default()
